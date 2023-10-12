@@ -1,0 +1,9 @@
+iletego=0
+with open("coco.txt","r") as plik:
+    plikstr=plik.read()
+    for lit in range(len(plikstr)):
+        if lit == 0 or lit==len(plikstr)-1:
+            iletego += 0
+        elif plikstr[lit]!=plikstr[lit-1]:
+                iletego+=1
+print(iletego)
