@@ -1,0 +1,27 @@
+import time
+from bs4 import BeautifulSoup
+import requests
+
+
+#program ma na celu znaleźć w kodzie strony cookie clickera i znaleźć div z klasą 'shimmers' i pokazać atrybut 'style'
+
+#końcowy cel to znalezienie przez program golden cookie i kliknięcie ('shimmers' to klasa golden cookie)
+
+#program na razie nie działa bo nie wiem jak on ma to znaleźć w już otwartym oknie
+
+
+cookiestyle=''
+url='https://orteil.dashnet.org/cookieclicker/'
+
+response = requests.get(url)
+html_content = response.text
+soup = BeautifulSoup(html_content, 'html.parser')
+
+while cookiestyle=='':
+    try:
+        cookie = soup.find('div', class_='shimmers')
+        cookiestyle = cookie['style']
+
+    except: time.sleep(0.001)
+
+print(cookiestyle)
